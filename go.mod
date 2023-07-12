@@ -5,6 +5,7 @@ go 1.20
 require (
 	github.com/diamondburned/arikawa/v3 v3.3.0
 	github.com/joho/godotenv v1.5.1
+	github.com/texttheater/golang-levenshtein/levenshtein v0.0.0-20200805054039-cae8b0eaed6c
 )
 
 require (
