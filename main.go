@@ -12,10 +12,8 @@ import (
 func main() {
 	m := matcher.Matcher{
 		Phrases: []matcher.Phrase{
-			{
-				"hello",
-				"world",
-			},
+			{"i'm", "crying"},
+			{"i", "am", "crying"},
 		},
 		InteruptThreshold:   1,
 		SimilarityThreshold: 0.5,
@@ -23,6 +21,7 @@ func main() {
 			return levenshtein.RatioForStrings([]rune(a), []rune(b), levenshtein.DefaultOptions)
 		},
 	}
-	result := m.Match("hello world")
+
+	result := m.Match("i am freaking crying")
 	fmt.Println(result)
 }

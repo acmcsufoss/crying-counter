@@ -47,24 +47,26 @@ func (m *Matcher) Match(content string) bool {
 
 // matchPhrase returns true if the words match the phrase.
 func (m *Matcher) MatchPhrase(words []Word, phrase Phrase) bool {
-	wordIndex, latestInteruptIndex := 0, -1
-	for i, word := range words {
+	wordIndex, indexInPhase, latestInteruptIndex := 0, 0, -1
+	for wordIndex < len(words) {
 		// If the word is similar to the current word in the phrase, we continue.
-		if m.Similarity(word, phrase[wordIndex]) >= m.SimilarityThreshold {
-			latestInteruptIndex = i
-			wordIndex++
+		if m.Similarity(words[wordIndex], phrase[indexInPhase]) >= m.SimilarityThreshold {
+			latestInteruptIndex = wordIndex
+			indexInPhase++
 		}
 
 		// If the word is not similar to the current word in the phrase, we check
 		// if we can skip it.
-		if latestInteruptIndex > -1 && latestInteruptIndex+m.InteruptThreshold < i {
-			return false
+		if latestInteruptIndex > -1 && latestInteruptIndex+m.InteruptThreshold < wordIndex {
+			wordIndex, indexInPhase, latestInteruptIndex = latestInteruptIndex, 0, -1
 		}
 
 		// If we reached the end of the phrase, we return true.
-		if wordIndex == len(phrase) {
+		if indexInPhase == len(phrase) {
 			return true
 		}
+
+		wordIndex++
 	}
 
 	return false
