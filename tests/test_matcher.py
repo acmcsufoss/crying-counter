@@ -1,5 +1,5 @@
 import unittest
-from matcher import Matcher
+from crying_counter.matcher import Matcher
 
 class TestMatcher(unittest.TestCase):
     def test_exact_match(self):

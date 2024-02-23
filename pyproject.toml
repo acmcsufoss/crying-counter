@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "crying_counter"
+version = "0.1.0"
+description = "Discord bot that counts whenever a user types \"im crying\""
+authors = ["Justin Lee <81937119+JustinPLee@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "crying_counter"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+discord = "^2.3.2"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -20,7 +20,7 @@ async def on_ready():
 
     #this is in the event the bot crashed and we wanna recopy values from our database into our hashmap
     try:
-        with Database('db/counts.sqlite') as db:
+        with Database('crying_counter/db/counts.sqlite') as db:
             db.createTable()
 
             db.execute("SELECT * FROM Crying")
@@ -48,7 +48,7 @@ async def count_message(message):
     counter[user_id] = counter.get(user_id, 0) + 1
     #call database function for increment_count
     try:
-        with Database('db/counts.sqlite') as db:
+        with Database('crying_counter/db/counts.sqlite') as db:
             db.increment_count(user_id, counter[user_id])            
     except sqlite3.Error as err:
         print("Error incrementing count", err)
