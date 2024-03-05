@@ -4,9 +4,9 @@ import discord
 from discord.ext import commands
 
 
-from matcher import is_similar
-from db.database import Database
-from settings import BOT_TOKEN
+from .matcher import is_similar
+from .db.database import Database
+from .settings import BOT_TOKEN
 
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix="!", intents=intents)
